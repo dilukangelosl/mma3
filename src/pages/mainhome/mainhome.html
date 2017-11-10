@@ -26,26 +26,26 @@
       <p>Get the latest Marina News Feed</p>
     </ion-col>
     <ion-col col-4>
-      <img src="./assets/imgs/h02.png" />
+      <img src="./assets/imgs/h02.png" (click)="gotoPage('FactsPage')" />
       <p>Learn about Marina Ingredients</p> 
     </ion-col>
     <ion-col col-4>
-      <img src="./assets/imgs/h03.png" />
+      <img src="./assets/imgs/h03.png" (click)="gotoPage('ProductsPage')" />
       <p>Buy your Marina Products Now</p>
     </ion-col>
   </ion-row>
 
   <ion-row class="imagebuttonrow">
     <ion-col col-4>
-      <img src="./assets/imgs/h04.png" />
+      <img src="./assets/imgs/h04.png" (click)="gotoPage('RecepiesPage')" />
       <p>Top Marina Recepies at your fingertips</p>
     </ion-col>
     <ion-col col-4>
-      <img src="./assets/imgs/h05.png" />
+      <img src="./assets/imgs/h05.png" (click)="gotoPage('OffersPage')"/>
       <p>Get the latest Marina Offers</p>
     </ion-col>
     <ion-col col-4>
-      <img src="./assets/imgs/h06.png" />
+      <img src="./assets/imgs/h06.png"  (click)="gotoPage('StandardsPage')"/>
       <p>Learn about Marina Standards</p>
     </ion-col>
   </ion-row>
@@ -58,7 +58,7 @@
 <ion-footer >
   <ion-toolbar color="primary">
     <ion-title>
-      <button ion-button color="primary" class="footerbutton">Get in touch with our Consultants</button>
+      <button ion-button color="primary" class="footerbutton" (click)="gotoPage('ConsultantPage')">Get in touch with our Consultants</button>
     </ion-title>
   </ion-toolbar>
 </ion-footer>

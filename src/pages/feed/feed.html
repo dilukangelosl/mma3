@@ -7,12 +7,52 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>feed</ion-title>
+    <ion-title>Feed</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+<ion-list>
+<ion-card *ngFor="let feed of feeds" (click) = "viewFeed(feed)">
 
+  <ion-item>
+    <ion-avatar item-left>
+      <img src="{{feed.thumbnail}}">
+    </ion-avatar>
+    <h2>{{feed.title}}</h2>
+   
+  </ion-item>
+
+  <img src="{{feed.image}}">
+
+  <ion-card-content>
+    <p>{{feed.content}}
+    </p>
+  </ion-card-content>
+
+  <ion-row>
+    <ion-col>
+      <button ion-button icon-left clear small>
+        <ion-icon name="thumbs-up"></ion-icon>
+        <div>{{feed.likes.length}} Likes</div>
+      </button>
+    </ion-col>
+    <ion-col>
+      <button ion-button icon-left clear small>
+        <ion-icon name="text"></ion-icon>
+        <div>{{feed.comments.length}} Comments</div>
+      </button>
+    </ion-col>
+    <ion-col center text-center>
+      <ion-note>
+        {{getTime(feed.publishedDate)}}
+      </ion-note>
+    </ion-col>
+  </ion-row>
+
+</ion-card>
+
+</ion-list>
 </ion-content>

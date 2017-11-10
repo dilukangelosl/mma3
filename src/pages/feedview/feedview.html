@@ -1,0 +1,66 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{feed.title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content  style="background: #f4f4f4">
+
+  <img src="{{feed.image}}" />
+
+<div style="width: 100%; position: absolute">
+<ion-card style="position: relative; top:-40px;">
+  <ion-card-content>
+    <ion-row>
+
+          <ion-col width="66">
+            <h2 style="color:#e74c3c">{{feed.title}}</h2>
+    <h2 style="color: #8e8e8e;">  <ion-icon ios="ios-time-outline" md="ios-time-outline"></ion-icon> {{formatDate(feed.publishedDate)}}</h2>
+    <p style="color:#2c3e50">{{feed.content}}</p>
+          </ion-col>
+
+          <ion-col width="33">
+                <h1 style="    text-align: right;    color: #545454;"> <ion-icon ios="ios-thumbs-up" md="md-thumbs-up"></ion-icon> {{feed.likes.length}}</h1>
+          </ion-col>
+
+
+    </ion-row>
+  </ion-card-content>
+
+</ion-card>
+
+<ion-card style="position: relative; top:-45px;">
+  <ion-card-content>
+    <h2 style="color:#e74c3c">Comments</h2>
+
+<ion-list *ngFor="let comment of feed.comments">
+  <ion-item>
+    <ion-avatar item-left>
+      <img src="{{comment.user.image}}">
+    </ion-avatar>
+    <h2>{{comment.user.name}}</h2>
+    <p>{{comment.comment}}</p>
+  </ion-item>
+</ion-list>
+    
+  </ion-card-content>
+
+</ion-card>
+
+</div>
+
+</ion-content>
+<ion-footer >
+  <ion-toolbar color="primary" >
+     <ion-input type="text" style="border-radius: 5px;padding-left: 10px;background:white;"></ion-input>
+    <ion-buttons end>
+      <button ion-button icon-right color="royal">
+        Comment
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

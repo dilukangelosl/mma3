@@ -2,31 +2,28 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the MainhomePage page.
+ * Generated class for the ConsultantPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 
-@IonicPage({
-  name: 'homePage'
-})
+@IonicPage()
 @Component({
-  selector: 'page-mainhome',
-  templateUrl: 'mainhome.html',
+  selector: 'page-consultant',
+  templateUrl: 'consultant.html',
 })
-export class MainhomePage {
+export class ConsultantPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MainhomePage');
+    console.log('ionViewDidLoad ConsultantPage');
   }
 
-  gotoPage(name:string){
-    this.navCtrl.push(name);
-  }
-
+  go(){
+this.navCtrl.push("ChatPage");
+}
 
 }
