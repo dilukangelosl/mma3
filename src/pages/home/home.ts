@@ -11,4 +11,8 @@ export class HomePage {
 
   }
 
+  gotoPage(name:string){
+    this.navCtrl.push("FeedPage");
+  }
+
 }

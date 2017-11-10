@@ -1,3 +1,33 @@
 page-home {
+#mainheaderbar .toolbar-title{
+    padding-left:0;
+}
+.centerimg{
+    margin: 0 auto;
+    display:block;
+}
+.homeheader{
+    height: 250px;
+    width: 100%;
+    background: url(../assets/imgs/homeheader.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
+.imagebuttonrow ion-col p{
+text-align: center;
+margin-top: 5px;
+}
+
+.homegrid {
+    margin-top: 10px;
+}
+.footerbutton{
+    background: #ed1f25;
+    border-radius: 5px;
+    border: 2px solid #fef200;
+    display: block;
+    margin: 0 auto;
+}
 }
