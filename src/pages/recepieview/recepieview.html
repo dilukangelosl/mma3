@@ -1,0 +1,44 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+      <ion-title>{{item.title}}</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content  style="background: white;">
+  
+    <img src="http://dilukangelo.westus.cloudapp.azure.com:3001{{item.thumbnail}}" class="cen" />
+  
+  <div style="width: 100%; position: absolute">
+  <ion-card style="position: relative;">
+    <ion-card-content>
+        <h2 style="color:#e74c3c">{{item.title}}</h2>
+     
+    </ion-card-content>
+  
+  </ion-card>
+  
+  <ion-card style="position: relative; ">
+    <ion-card-content>
+        <div [innerHTML]="item.content"></div>
+  
+  <!-- <ion-list *ngFor="let comment of feed.comments">
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="{{comment.user.image}}">
+      </ion-avatar>
+      <h2>{{comment.user.name}}</h2>
+      <p>{{comment.comment}}</p>
+    </ion-item>
+  </ion-list> -->
+      
+    </ion-card-content>
+  
+  </ion-card>
+  
+  </div>
+  
+  </ion-content>
+ 

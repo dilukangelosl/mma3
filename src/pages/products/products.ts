@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import {ApiProvider} from '../../providers/api/api';
 /**
  * Generated class for the ProductsPage page.
  *
@@ -14,60 +14,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'products.html',
 })
 export class ProductsPage {
-products:any ;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  products: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public api:ApiProvider) {
 
-      this.products = [
+  this.doRefresh(null);
+  }
 
-      {
-        name:"Marina Oil",
-        image:"./assets/img/product1.jpg",
-        description:"demo Description",
-        price:"Rs 500"
-      },
-      {
-        name:"Marina Oil",
-        image:"./assets/img/product2.jpg",
-        description:"demo Description",
-        price:"Rs 500"
-      },
-      {
-        name:"Marina Oil",
-        image:"./assets/img/product3.jpg",
-        description:"demo Description",
-        price:"Rs 500"
-      },
-      {
-        name:"Marina Oil",
-        image:"./assets/img/product4.jpg",
-        description:"demo Description",
-        price:"Rs 500"
-      },
-      {
-        name:"Marina Oil",
-        image:"./assets/img/product5.jpg",
-        description:"demo Description",
-        price:"Rs 500"
-      },
-      {
-        name:"Marina Oil",
-        image:"./assets/img/product6.jpg",
-        description:"demo Description",
-        price:"Rs 500"
-      },
-      {
-        name:"Marina Oil",
-        image:"./assets/img/product7.jpg",
-        description:"demo Description",
-        price:"Rs 500"
-      },
-      {
-        name:"Marina Oil",
-        image:"./assets/img/product8.jpg",
-        description:"demo Description",
-        price:"Rs 500"
+  doRefresh(refresher) {
+    this.products = [];
+    this.api.getProducts().then(res => {
+      console.log(res);
+      if(refresher != null){
+        refresher.complete();
       }
-    ];
+      if(res["status"]){
+        this.products = res["data"];
+       
+      }
+      else{
+        //no results
+      }
+    })
+  }
+
+  go(product){
+    this.navCtrl.push("ProductviewPage", {product:product});
   }
 
   ionViewDidLoad() {

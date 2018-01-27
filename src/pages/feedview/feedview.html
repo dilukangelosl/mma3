@@ -9,7 +9,7 @@
 
 <ion-content  style="background: #f4f4f4">
 
-  <img src="{{feed.image}}" />
+  <img src="http://dilukangelo.westus.cloudapp.azure.com:3001{{feed.thumbnail}}" />
 
 <div style="width: 100%; position: absolute">
 <ion-card style="position: relative; top:-40px;">
@@ -18,25 +18,27 @@
 
           <ion-col width="66">
             <h2 style="color:#e74c3c">{{feed.title}}</h2>
-    <h2 style="color: #8e8e8e;">  <ion-icon ios="ios-time-outline" md="ios-time-outline"></ion-icon> {{formatDate(feed.publishedDate)}}</h2>
-    <p style="color:#2c3e50">{{feed.content}}</p>
+    <h2 style="color: #8e8e8e;">  <ion-icon ios="ios-time-outline" md="ios-time-outline"></ion-icon> {{formatDate(feed.updatedAt)}}</h2>
+    
+            
           </ion-col>
 
           <ion-col width="33">
-                <h1 style="    text-align: right;    color: #545454;"> <ion-icon ios="ios-thumbs-up" md="md-thumbs-up"></ion-icon> {{feed.likes.length}}</h1>
+                <h1 style="    text-align: right;    color: #545454;"> <ion-icon ios="ios-thumbs-up" md="md-thumbs-up"></ion-icon> 0</h1>
           </ion-col>
 
 
     </ion-row>
+   
   </ion-card-content>
 
 </ion-card>
 
 <ion-card style="position: relative; top:-45px;">
   <ion-card-content>
-    <h2 style="color:#e74c3c">Comments</h2>
+      <div [innerHTML]="feed.content"></div>
 
-<ion-list *ngFor="let comment of feed.comments">
+<!-- <ion-list *ngFor="let comment of feed.comments">
   <ion-item>
     <ion-avatar item-left>
       <img src="{{comment.user.image}}">
@@ -44,7 +46,7 @@
     <h2>{{comment.user.name}}</h2>
     <p>{{comment.comment}}</p>
   </ion-item>
-</ion-list>
+</ion-list> -->
     
   </ion-card-content>
 

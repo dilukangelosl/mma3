@@ -15,11 +15,13 @@
 
 
 <ion-content class="card-background-page">
-
-  <ion-card *ngFor="let item of items">
-    <img src="{{item.image}}"/>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+  <ion-card *ngFor="let item of items" (click)="go(item)">
+    <img src="http://dilukangelo.westus.cloudapp.azure.com:3001{{item.thumbnail}}"/>
     <div class="card-title">{{item.title}}</div>
-    <div class="card-subtitle">{{item.views}} views</div>
+    
   </ion-card>
 
 

@@ -14,40 +14,45 @@
 
 
 <ion-content padding>
+
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+
+
 <ion-list>
 <ion-card *ngFor="let feed of feeds" (click) = "viewFeed(feed)">
 
   <ion-item>
     <ion-avatar item-left>
-      <img src="{{feed.thumbnail}}">
+      <img src="http://dilukangelo.westus.cloudapp.azure.com:3001{{feed.thumbnail}}">
     </ion-avatar>
     <h2>{{feed.title}}</h2>
    
   </ion-item>
 
-  <img src="{{feed.image}}">
+  <img src="http://dilukangelo.westus.cloudapp.azure.com:3001{{feed.thumbnail}}">
 
   <ion-card-content>
-    <p>{{feed.content}}
-    </p>
+    
   </ion-card-content>
 
   <ion-row>
     <ion-col>
       <button ion-button icon-left clear small>
         <ion-icon name="thumbs-up"></ion-icon>
-        <div>{{feed.likes.length}} Likes</div>
+        <div> Likes</div>
       </button>
     </ion-col>
     <ion-col>
       <button ion-button icon-left clear small>
         <ion-icon name="text"></ion-icon>
-        <div>{{feed.comments.length}} Comments</div>
+        <div> Comments</div>
       </button>
     </ion-col>
     <ion-col center text-center>
       <ion-note>
-        {{getTime(feed.publishedDate)}}
+        {{getTime(feed.updatedAt)}}
       </ion-note>
     </ion-col>
   </ion-row>
