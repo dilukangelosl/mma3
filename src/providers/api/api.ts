@@ -3,6 +3,8 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {domain} from '../config';
 import { Storage } from '@ionic/storage';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 /*
   Generated class for the ApiProvider provider.
 
@@ -11,9 +13,11 @@ import { Storage } from '@ionic/storage';
 */
 @Injectable()
 export class ApiProvider {
-
-  constructor(public http: Http,public storage: Storage) {
+ 
+public  fileTransfer: FileTransferObject;
+  constructor(public http: Http,public storage: Storage,private transfer: FileTransfer, private file: File) {
     console.log('Hello ApiProvider Provider');
+     this.fileTransfer = this.transfer.create();
   }
 
   getFacts(){
@@ -36,6 +40,14 @@ export class ApiProvider {
       this.storage.get('products').then(products => {
         if(products == null){
           this.http.get(domain+"products").map(res => res.json()).subscribe(res => {
+            //set offline images
+            res["data"].forEach(element => {
+              console.log(element);
+              let splits = element.thumbnail[0].split(".");
+              let filename = splits[splits.length -2] +"."+ splits[splits.length -1]
+              console.log(filename);
+            });
+            
             this.storage.set('products',JSON.stringify(res));
             resolve(res);
           })
@@ -91,6 +103,11 @@ export class ApiProvider {
         }
       })
     })
+  }
+
+  download(url, filename) {
+    // entry.toURL()
+    return this.fileTransfer.download(url, this.file.dataDirectory + filename);
   }
   
 

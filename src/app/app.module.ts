@@ -9,7 +9,8 @@ import { HttpModule } from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ApiProvider } from '../providers/api/api';
-
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 @NgModule({
   declarations: [
     MyApp,
@@ -19,6 +20,7 @@ import { ApiProvider } from '../providers/api/api';
   imports: [
     BrowserModule,
     HttpModule,
+    
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
   ],
@@ -32,7 +34,9 @@ import { ApiProvider } from '../providers/api/api';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ApiProvider
+    ApiProvider,
+    FileTransfer,
+    File
   ]
 })
 export class AppModule {}
